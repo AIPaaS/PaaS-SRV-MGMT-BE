@@ -11,5 +11,4 @@
        command: mkdir -vp {{HOST_DATA}}        
      - name: docker run
        command: docker run -itd --name="{{USER_PID}}-{{SES_SRV_ID}}-{{SRV_HTTP_PORT}}" -v "{{HOST_DATA}}:/usr/share/elasticsearch/data" -e "USER_PID={{USER_PID}}" -e "SES_SRV_ID={{SES_SRV_ID}}" -e "SRV_PORT={{SRV_PORT}}" -e "SRV_HTTP_PORT={{SRV_HTTP_PORT}}" -e "SES_CLUSTER={{SES_CLUSTER}}" -e "SRV_HOST={{SRV_HOST}}" -e "IK_EXT_URL={{IK_EXT_URL}}" --net=host "{{image}}"
-       register: docker_run
-       failed_when: "'FAILED' in docker_run.stderr"
+
