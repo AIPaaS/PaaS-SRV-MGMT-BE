@@ -10,7 +10,6 @@
     <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="zk_auth_user" property="zkAuthUser" jdbcType="VARCHAR" />
     <result column="zk_auth_passwd" property="zkAuthPasswd" jdbcType="VARCHAR" />
-    <result column="host_user_name" property="hostUserName" jdbcType="VARCHAR" />
     <result column="org_code" property="orgCode" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -73,7 +72,7 @@
   </sql>
   <sql id="Base_Column_List" >
     cluster_id, cluster_name, zk_address, kafka_address, cluster_state, remark, zk_auth_user, 
-    zk_auth_passwd, host_user_name, org_code
+    zk_auth_passwd, org_code
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.paas.ipaas.mds.dao.mapper.bo.MdsResourcePoolCriteria" >
     select
@@ -111,12 +110,12 @@
   <insert id="insert" parameterType="com.ai.paas.ipaas.mds.dao.mapper.bo.MdsResourcePool" >
     insert into mds_resource_pool (cluster_id, cluster_name, zk_address, 
       kafka_address, cluster_state, remark, 
-      zk_auth_user, zk_auth_passwd, host_user_name, 
-      org_code)
+      zk_auth_user, zk_auth_passwd, org_code
+      )
     values (#{clusterId,jdbcType=INTEGER}, #{clusterName,jdbcType=VARCHAR}, #{zkAddress,jdbcType=VARCHAR}, 
       #{kafkaAddress,jdbcType=VARCHAR}, #{clusterState,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
-      #{zkAuthUser,jdbcType=VARCHAR}, #{zkAuthPasswd,jdbcType=VARCHAR}, #{hostUserName,jdbcType=VARCHAR}, 
-      #{orgCode,jdbcType=VARCHAR})
+      #{zkAuthUser,jdbcType=VARCHAR}, #{zkAuthPasswd,jdbcType=VARCHAR}, #{orgCode,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.ai.paas.ipaas.mds.dao.mapper.bo.MdsResourcePool" >
     insert into mds_resource_pool
@@ -144,9 +143,6 @@
       </if>
       <if test="zkAuthPasswd != null" >
         zk_auth_passwd,
-      </if>
-      <if test="hostUserName != null" >
-        host_user_name,
       </if>
       <if test="orgCode != null" >
         org_code,
@@ -176,9 +172,6 @@
       </if>
       <if test="zkAuthPasswd != null" >
         #{zkAuthPasswd,jdbcType=VARCHAR},
-      </if>
-      <if test="hostUserName != null" >
-        #{hostUserName,jdbcType=VARCHAR},
       </if>
       <if test="orgCode != null" >
         #{orgCode,jdbcType=VARCHAR},
@@ -218,9 +211,6 @@
       <if test="record.zkAuthPasswd != null" >
         zk_auth_passwd = #{record.zkAuthPasswd,jdbcType=VARCHAR},
       </if>
-      <if test="record.hostUserName != null" >
-        host_user_name = #{record.hostUserName,jdbcType=VARCHAR},
-      </if>
       <if test="record.orgCode != null" >
         org_code = #{record.orgCode,jdbcType=VARCHAR},
       </if>
@@ -239,7 +229,6 @@
       remark = #{record.remark,jdbcType=VARCHAR},
       zk_auth_user = #{record.zkAuthUser,jdbcType=VARCHAR},
       zk_auth_passwd = #{record.zkAuthPasswd,jdbcType=VARCHAR},
-      host_user_name = #{record.hostUserName,jdbcType=VARCHAR},
       org_code = #{record.orgCode,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -269,9 +258,6 @@
       <if test="zkAuthPasswd != null" >
         zk_auth_passwd = #{zkAuthPasswd,jdbcType=VARCHAR},
       </if>
-      <if test="hostUserName != null" >
-        host_user_name = #{hostUserName,jdbcType=VARCHAR},
-      </if>
       <if test="orgCode != null" >
         org_code = #{orgCode,jdbcType=VARCHAR},
       </if>
@@ -287,7 +273,6 @@
       remark = #{remark,jdbcType=VARCHAR},
       zk_auth_user = #{zkAuthUser,jdbcType=VARCHAR},
       zk_auth_passwd = #{zkAuthPasswd,jdbcType=VARCHAR},
-      host_user_name = #{hostUserName,jdbcType=VARCHAR},
       org_code = #{orgCode,jdbcType=VARCHAR}
     where cluster_id = #{clusterId,jdbcType=INTEGER}
   </update>
