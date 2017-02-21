@@ -23,5 +23,11 @@ public class RPCSesUserInstImpl implements IRPCSesUserInst {
 				.queryInst(userId, srvId);			
 		return CloneTool.clone(userInst, SesUserInstance.class);
 	}
+	
+	@Override
+	public String getHostIp()throws PaasException {
+		String hostIp = sesUserInst.getHostIp();			
+		return hostIp;
+	}
 
 }

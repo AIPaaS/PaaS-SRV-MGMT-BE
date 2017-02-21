@@ -14,6 +14,9 @@ import com.ai.paas.ipaas.ses.dao.mapper.bo.SesUserInstance;
 import com.ai.paas.ipaas.ses.dao.mapper.bo.SesUserInstanceCriteria;
 import com.ai.paas.ipaas.ses.service.constant.SesConstants;
 import com.ai.paas.ipaas.ses.service.interfaces.ISesUserInst;
+import com.ai.paas.ipaas.base.dao.interfaces.IpaasSysConfigMapper;
+import com.ai.paas.ipaas.base.dao.mapper.bo.IpaasSysConfig;
+import com.ai.paas.ipaas.base.dao.mapper.bo.IpaasSysConfigCriteria;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -53,9 +56,11 @@ public class SesUserInstImpl implements ISesUserInst {
 		rpmc.createCriteria().andTableCodeEqualTo(SesConstants.HOST_CODE)
 				.andFieldCodeEqualTo(SesConstants.IP_CODE);
 		List<IpaasSysConfig> res = sysconfigDao.selectByExample(rpmc);
-		if (res == null || res.isEmpty())
-			throw new PaasException("host ip not config.");
-		return res.get(0).getFieldValue();
+		if (res == null || res.isEmpty()){
+			return null;
+		} else{
+			return res.get(0).getFieldValue();
+		}
 	}
 	
 
