@@ -44,6 +44,14 @@ public interface ISesManage {
 	 * @throws PaasException
 	 */
 	public String getSesServiceAdress(SesSrvApply sesSrvApply) throws PaasException;
+	
+	/**
+	 * 获得内外网的对应地址
+	 * 
+	 * @param msgSrvApply
+	 * @throws PaasException
+	 */
+	public String getHostIp() throws PaasException;
 	/**
 	 * 创建mapping(数据模型)
 	 * 

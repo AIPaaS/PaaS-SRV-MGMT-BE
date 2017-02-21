@@ -94,6 +94,11 @@ public class SesConstants extends PaaSConstant {
 	public static final String SSH_USER_CODE = "ses_ssh_user";
 	
 	public static final String SSH_USER_PWD_CODE = "ses_ssh_user_pwd";
+	 
+	public static final String HOST_CODE = "host";
+	
+	public static final String IP_CODE = "ip";
+	
 
 	/**
 	 * 认证返回结果

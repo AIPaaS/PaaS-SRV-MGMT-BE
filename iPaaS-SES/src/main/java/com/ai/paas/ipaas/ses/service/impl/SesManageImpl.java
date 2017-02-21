@@ -963,6 +963,18 @@ public class SesManageImpl implements ISesManage {
 		return res.get(0).getFieldValue();
 	}
 
+	public String getHostIp() throws PaasException {
+		IpaasSysConfigMapper sysconfigDao = ServiceUtil
+				.getMapper(IpaasSysConfigMapper.class);
+		IpaasSysConfigCriteria rpmc = new IpaasSysConfigCriteria();
+		rpmc.createCriteria().andTableCodeEqualTo(SesConstants.HOST_CODE)
+				.andFieldCodeEqualTo(SesConstants.IP_CODE);
+		List<IpaasSysConfig> res = sysconfigDao.selectByExample(rpmc);
+		if (res == null || res.isEmpty())
+			throw new PaasException("host ip not config.");
+		return res.get(0).getFieldValue();
+	}
+	
 	public static void main(String[] args) throws PaasException {
 		String indexName = String.valueOf(Math
 				.abs(("1321014990EB4DF79D893600A2F7CCA6SES003").hashCode()));
