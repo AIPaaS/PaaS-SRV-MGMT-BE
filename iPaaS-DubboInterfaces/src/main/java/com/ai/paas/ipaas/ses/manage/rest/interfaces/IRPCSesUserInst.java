@@ -26,5 +26,15 @@ public interface IRPCSesUserInst {
 	@POST
 	public SesUserInstance queryInst(@FormParam("userId") String userId, @FormParam("srvId") String srvId)
 			throws PaasException;
+	
+	/**
+	 * 获取内外网地址
+	 * 
+	 * @return hostIps
+	 * @throws PaasException
+	 */
+	@Path("getHostIp")
+	@POST
+	public String getHostIp()throws PaasException;
 
 }
