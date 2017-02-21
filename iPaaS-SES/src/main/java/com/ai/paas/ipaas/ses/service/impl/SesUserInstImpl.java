@@ -44,5 +44,19 @@ public class SesUserInstImpl implements ISesUserInst {
 			throw new PaasException(SesConstants.ExecResult.FAIL, e);
 		}
 	}
+	
+	@Override
+	public String getHostIp() throws PaasException {
+		IpaasSysConfigMapper sysconfigDao = ServiceUtil
+				.getMapper(IpaasSysConfigMapper.class);
+		IpaasSysConfigCriteria rpmc = new IpaasSysConfigCriteria();
+		rpmc.createCriteria().andTableCodeEqualTo(SesConstants.HOST_CODE)
+				.andFieldCodeEqualTo(SesConstants.IP_CODE);
+		List<IpaasSysConfig> res = sysconfigDao.selectByExample(rpmc);
+		if (res == null || res.isEmpty())
+			throw new PaasException("host ip not config.");
+		return res.get(0).getFieldValue();
+	}
+	
 
 }

@@ -8,6 +8,7 @@ import com.ai.paas.ipaas.ses.service.interfaces.ISesUserInst;
 import com.ai.paas.ipaas.util.CloneTool;
 import com.ai.paas.ipaas.vo.ses.SesUserInstance;
 import com.alibaba.dubbo.config.annotation.Service;
+import com.ai.paas.ipaas.ses.service.interfaces.ISesManage;
 
 @Service
 public class RPCSesUserInstImpl implements IRPCSesUserInst {
@@ -19,7 +20,7 @@ public class RPCSesUserInstImpl implements IRPCSesUserInst {
 	public SesUserInstance queryInst(String userId, String srvId)
 			throws PaasException {
 		com.ai.paas.ipaas.ses.dao.mapper.bo.SesUserInstance userInst = sesUserInst
-				.queryInst(userId, srvId);
+				.queryInst(userId, srvId);			
 		return CloneTool.clone(userInst, SesUserInstance.class);
 	}
 

@@ -14,5 +14,14 @@ public interface ISesUserInst {
 	 */
 	public SesUserInstance queryInst(String userId, String srvId)
 			throws PaasException;
+	
+	/**
+	 * 获得内外网的对应地址
+	 * 
+	 * @param 
+	 * @return hostIps
+	 * @throws PaasException
+	 */
+	public String getHostIp() throws PaasException;
 
 }
