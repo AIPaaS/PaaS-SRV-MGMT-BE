@@ -1,5 +1,5 @@
 dependencies {
-    compile 'com.ai:dubbo-ext:0.3.1'
+    compile 'com.ai:ipaas-base:0.3.1'
 }
 
 publishing {
