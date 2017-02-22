@@ -1,4 +1,4 @@
 dependencies {
     compile 'com.ai:ipaas-zookeeper-utility:0.3'
-    compile project(":iPaaS-DubboInterfaces")
+    compile 'com.ai:ipaas-service-dubbo-interfaces:0.3'
 }
